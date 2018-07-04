@@ -1,0 +1,157 @@
+<!DOCTYPE html >
+<html>
+  <head>
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="shortcut icon" type="image/x-icon" href="../image/icon.png" />
+  <title id="t">系统主页</title>
+
+  <!-- ========== Css Files ========== -->
+  <link href="../css/index.css" rel="stylesheet">
+  <script type="text/javascript" src="../js/jquery.min.js"></script>
+  
+  <style>
+  	html { overflow-x: hidden;overflow-y: hidden; }
+  </style>
+
+
+  </head>
+  <body>
+  <!-- Start Page Loading -->
+  <!--<div id="loading" class="loading-wrap" style="display: block">
+    <div class="loader" >
+      <div class="la-line-scale-party la-2x">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <div class="loaderTxt">数据交互中...</div>
+    </div>
+  </div>-->
+
+
+  <!-- End Page Loading -->
+  <!-- START TOP -->
+  <div id="top" class="clearfix">
+
+    <!-- Start App Logo -->
+    <div class="applogo">
+      <a href="index" class="logo">汇恒水务管理系统</a>
+    </div>
+    <!-- End App Logo -->
+
+    <!-- Start Sidebar Show Hide Button -->
+    <a href="javascript:isHide()" class="sidebar-open-button"><i style="color: #fff" class="fa fa-bars"></i></a>
+    <a href="javascript:void(0)" class="sidebar-open-button-mobile"><i style="color: #fff" class="fa fa-bars"></i></a>
+    <!-- End Sidebar Show Hide Button -->
+
+
+    <ul class="top-right">
+
+    <li class="dropdown link">
+      <a href="#" data-toggle="dropdown" class="dropdown-toggle profilebox"><img src="../image/profileimg.jpg" alt="img"><b>Hi,Admin</b><span class="caret"></span></a>
+        <ul class="dropdown-menu dropdown-menu-list dropdown-menu-right" style="margin-top: 15px">
+          <li><a href="javascript:void(0)"><i class="fa falist fa-info-circle"></i>个人信息</a></li>
+          <li class="divider"></li>
+          <li><a href="/logout"><i class="fa falist fa-power-off"></i>退出系统</a></li>
+        </ul>
+    </li>
+
+    </ul>
+    <!-- End Top Right -->
+
+  </div>
+  <!-- END TOP -->
+
+<!-- START SIDEBAR -->
+<div class="sidebar clearfix" style="height: 100%">
+
+<ul class="sidebar-panel nav">
+  <li class="sidetitle">Main</li>
+  <li><a href="javascript:void(0)" class="active" onclick="redirect('main');"><span class="icon color5"><i class="fa fa-home"></i></span>主页<!-- <span class="label label-default">2</span> --></a></li>
+  <li><a href="javascript:void(0)" ><span class="icon color7"><i class="fa fa-book"></i></span>基础信息管理<span class="caret"></span></a>
+    <ul>
+      <li><a onclick="redirect('userInfo');" href="javascript:;">账号信息管理</a></li>
+      <li><a onclick="redirect('dataPoint');" href="javascript:;">数据节点信息管理</a></li>
+      <li><a onclick="redirect('dpEquipment');" href="javascript:;">节点设备信息管理</a></li>
+      <li><a onclick="redirect('monitorEquipment');" href="javascript:;" >监控设备信息管理</a></li>
+      <li><a onclick="redirect('alarmSetting');" href="javascript:;" >报警参数管理</a></li>
+    </ul>
+  </li>
+  <li><a href="javascript:void(0)" ><span class="icon color7"><i class="fa fa-refresh"></i></span>实时预览<span class="caret"></span></a>
+    <ul>
+      <li><a onclick="redirect('realData');" href="javascript:;">实时节点数据</a></li>
+      <li><a onclick="redirect('realVideo');" href="javascript:;">实时监控数据</a></li>
+    </ul>
+  </li>
+  <li><a href="javascript:void(0)" ><span class="icon color7"><i class="fa fa-history"></i></span>历史数据<span class="caret"></span></a>
+    <ul>
+      <li><a onclick="redirect('historyData');" href="javascript:;">历史节点数据</a></li>
+      <li><a onclick="redirect('historyVideo');" href="javascript:;">历史监控信息</a></li>
+    </ul>
+  </li>
+  <li><a href="javascript:void(0)" ><span class="icon color7"><i class="fa fa-bar-chart-o"></i></span>数据报表<span class="caret"></span></a>
+    <ul>
+      <li><a onclick="redirect('chart1');" href="javascript:;">报表一</a></li>
+      <li><a onclick="redirect('chart2');" href="javascript:;">报表二</a></li>
+    </ul>
+  </li>
+  <li><a href="javascript:void(0)" onclick="redirect('alarm');"><span class="icon color5"><i class="fa fa-bell-o"></i></span>报警管理<span class="label label-danger">6</span></a></li>
+
+</ul>
+
+<ul class="sidebar-panel nav">
+  <li class="sidetitle">More</li>
+  <li><a onclick="redirect('grid');" href="javascript:;"><span class="icon color15"><i class="fa fa-columns"></i></span>Grid System</a></li>
+</ul>
+
+<div class="sidebar-plan">
+  Pro Plan<a href="javascript:void(0)" class="link">Upgrade</a>
+  <div class="progress">
+  <div class="progress-bar" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%;">
+  </div>
+</div>
+<span class="space">42 GB / 100 GB</span>
+</div>
+
+
+</div>
+<!-- END SIDEBAR -->
+
+<iframe id="mainframe" name="mainframe" marginwidth="0" marginheight="0" src="/menu/redirect?htmlName=main" frameborder="0" style="margin-left: 260px;margin-top: 60px;" width="100%" scrolling="yes" height="100%"></iframe>
+
+
+
+<!-- ================================================
+jQuery Library
+================================================ -->
+
+<!-- ================================================
+Bootstrap Core JavaScript File
+================================================ -->
+<script src="../plugins/bootstrap/bootstrap.min.js"></script>
+
+<!-- ================================================
+Plugin.js - Some Specific JS codes for Plugin Settings
+================================================ -->
+<script type="text/javascript" src="../js/plugins.js"></script>
+
+<!-- ================================================
+Bootstrap Select
+================================================ -->
+<script type="text/javascript" src="../plugins/bootstrap/bootstrap-select/bootstrap-select.js"></script>
+
+<!-- ================================================
+Bootstrap Toggle
+================================================ -->
+<script type="text/javascript" src="../plugins/bootstrap/bootstrap-toggle/bootstrap-toggle.min.js"></script>
+<script src="../js/user/index.js"></script>
+
+
+
+</body>
+</html>
