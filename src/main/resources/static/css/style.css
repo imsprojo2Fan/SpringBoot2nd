@@ -267,6 +267,7 @@ strong {
 .container-padding {
   padding-left: 20px;
   padding-right: 20px;
+  margin-top: 6%;
 }
 .container-no-padding {
   padding: 0px;
@@ -875,7 +876,7 @@ Sidepanel
 Content 
 ================================================================================= */
 .content {
-  padding: 20px 30px 90px 30px;
+  padding: 20px 20px 20px 20px;
   background: #f5f5f5;
 }
 /* =================================================================================
@@ -901,7 +902,9 @@ Page Header
   margin: -20px -30px 20px -30px;
   padding: 20px;
   border-bottom: none;
-  position: relative;
+  position: fixed;
+  z-index: 999;
+  width: 100%;
 }
 .page-header .title {
   padding: 0;
