@@ -13,111 +13,110 @@ public class User implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 
-	private int Id;
-	private String Account;
-	private String Password;
-	private String Name;
-	private int Type;
-	private String Phone;
-	private String Avatar;
-	private int Wxinfo_id;
-	private Date Updated;
-	private Date Created;
+	private int id;
+	private String account;
+	private String password;
+	private String name;
+	private int type;
+	private String phone;
+	private String avatar;
+	private int wxinfo_id;
+	private Date updated;
+	private Date created;
 
 	public int getId() {
-		return Id;
+		return id;
 	}
 
 	public void setId(int id) {
-		Id = id;
+		this.id = id;
 	}
 
 	public String getAccount() {
-		return Account;
+		return account;
 	}
 
 	public void setAccount(String account) {
-		Account = account;
+		this.account = account;
 	}
 
-
 	public String getPassword() {
-		return Password;
+		return password;
 	}
 
 	public void setPassword(String password) {
-		Password = password;
+		this.password = password;
 	}
 
 	public String getName() {
-		return Name;
+		return name;
 	}
 
 	public void setName(String name) {
-		Name = name;
+		this.name = name;
 	}
 
 	public int getType() {
-		return Type;
+		return type;
 	}
 
 	public void setType(int type) {
-		Type = type;
+		this.type = type;
 	}
 
 	public String getPhone() {
-		return Phone;
+		return phone;
 	}
 
 	public void setPhone(String phone) {
-		Phone = phone;
+		this.phone = phone;
 	}
 
 	public String getAvatar() {
-		return Avatar;
+		return avatar;
 	}
 
 	public void setAvatar(String avatar) {
-		Avatar = avatar;
+		this.avatar = avatar;
 	}
 
 	public int getWxinfo_id() {
-		return Wxinfo_id;
+		return wxinfo_id;
 	}
 
 	public void setWxinfo_id(int wxinfo_id) {
-		Wxinfo_id = wxinfo_id;
+		this.wxinfo_id = wxinfo_id;
 	}
 
 	public Date getUpdated() {
-		return Updated;
+		return updated;
 	}
 
 	public void setUpdated(Date updated) {
-		Updated = updated;
+		this.updated = updated;
 	}
 
 	public Date getCreated() {
-		return Created;
+		return created;
 	}
 
 	public void setCreated(Date created) {
-		Created = created;
+		this.created = created;
 	}
 
 	@Override
 	public String toString() {
 		return "User{" +
-				"Id=" + Id +
-				", Account='" + Account + '\'' +
-				", Password='" + Password + '\'' +
-				", Name='" + Name + '\'' +
-				", Type=" + Type +
-				", Phone='" + Phone + '\'' +
-				", Avatar='" + Avatar + '\'' +
-				", Wxinfo_id=" + Wxinfo_id +
-				", Updated=" + Updated +
-				", Created=" + Created +
+				"id=" + id +
+				", account='" + account + '\'' +
+				", password='" + password + '\'' +
+				", name='" + name + '\'' +
+				", type=" + type +
+				", phone='" + phone + '\'' +
+				", avatar='" + avatar + '\'' +
+				", wxinfo_id=" + wxinfo_id +
+				", updated=" + updated +
+				", created=" + created +
 				'}';
 	}
 }

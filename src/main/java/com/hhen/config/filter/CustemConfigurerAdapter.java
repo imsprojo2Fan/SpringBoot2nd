@@ -26,7 +26,7 @@ public class CustemConfigurerAdapter {
 		registrationBean.setFilter(authFilter);
 		registrationBean.setOrder(1);
 		List<String> urlList = new ArrayList<String>();
-		urlList.add("/menu/*");
+		urlList.add("/main/*");
 		urlList.add("/user/*");
 		registrationBean.setUrlPatterns(urlList);
 		return registrationBean;

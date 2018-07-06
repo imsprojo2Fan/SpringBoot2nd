@@ -739,7 +739,7 @@ var Chartist = {
    * Provides options handling functionality with callback for options changes triggered by responsive options and media query matches
    *
    * @memberof Chartist.Core
-   * @param {Object} options Options set by menu
+   * @param {Object} options Options set by main
    * @param {Array} responsiveOptions Optional functions to add responsive behavior to chart
    * @param {Object} eventEmitter The event emitter that will be used to emit the options changed events
    * @return {Object} The consolidated options object from the defaults, base and matching responsive options

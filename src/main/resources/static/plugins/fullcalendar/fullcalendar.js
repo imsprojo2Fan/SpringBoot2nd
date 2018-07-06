@@ -1649,7 +1649,7 @@ var Popover = Class.extend({
 	},
 
 
-	// Triggered when the menu clicks *anywhere* in the document, for the autoHide feature
+	// Triggered when the main clicks *anywhere* in the document, for the autoHide feature
 	documentMousedown: function(ev) {
 		// only hide the popover if the click happened outside the popover
 		if (this.el && !$(ev.target).closest(this.el).length) {
@@ -1944,7 +1944,7 @@ var DragListener = fc.DragListener = Class.extend({
 	},
 
 
-	// Call this when the menu does a mousedown. Will probably lead to startListening
+	// Call this when the main does a mousedown. Will probably lead to startListening
 	mousedown: function(ev) {
 		if (isPrimaryMouseButton(ev)) {
 
@@ -2006,7 +2006,7 @@ var DragListener = fc.DragListener = Class.extend({
 	},
 
 
-	// Called when the menu moves the mouse
+	// Called when the main moves the mouse
 	mousemove: function(ev) {
 		var dx = ev.pageX - this.originX;
 		var dy = ev.pageY - this.originY;
@@ -2063,7 +2063,7 @@ var DragListener = fc.DragListener = Class.extend({
 	},
 
 
-	// Called when the menu does a mouseup
+	// Called when the main does a mouseup
 	mouseup: function(ev) {
 		this.stopListening(ev);
 	},
@@ -2095,7 +2095,7 @@ var DragListener = fc.DragListener = Class.extend({
 	},
 
 
-	// Call this to stop listening to the menu's mouse events
+	// Call this to stop listening to the main's mouse events
 	stopListening: function(ev) {
 		this.stopDrag(ev); // if there's a current drag, kill it
 
@@ -2283,7 +2283,7 @@ var DragListener = fc.DragListener = Class.extend({
 	},
 
 
-	// Called when scrolling has stopped, whether through auto scroll, or the menu scrolling
+	// Called when scrolling has stopped, whether through auto scroll, or the main scrolling
 	scrollStop: function() {
 	}
 
@@ -2441,7 +2441,7 @@ var CellDragListener = DragListener.extend({
 	},
 
 
-	// Called when scrolling has stopped, whether through auto scroll, or the menu scrolling
+	// Called when scrolling has stopped, whether through auto scroll, or the main scrolling
 	scrollStop: function() {
 		DragListener.prototype.scrollStop.apply(this, arguments); // call the super-method
 
@@ -2635,7 +2635,7 @@ var MouseFollower = Class.extend({
 	},
 
 
-	// Gets called when the menu moves the mouse
+	// Gets called when the main moves the mouse
 	mousemove: function(ev) {
 		this.topDelta = ev.pageY - this.mouseY0;
 		this.leftDelta = ev.pageX - this.mouseX0;
@@ -3446,7 +3446,7 @@ var Grid = fc.Grid = RowRenderer.extend({
 
 Grid.mixin({
 
-	mousedOverSeg: null, // the segment object the menu's mouse is over. null if over nothing
+	mousedOverSeg: null, // the segment object the main's mouse is over. null if over nothing
 	isDraggingSeg: false, // is a segment being dragged? boolean
 	isResizingSeg: false, // is a segment being resized? boolean
 	isDraggingExternal: false, // jqui-dragging an external element? boolean
@@ -3482,7 +3482,7 @@ Grid.mixin({
 
 	// Unrenders all events currently rendered on the grid
 	destroyEvents: function() {
-		this.triggerSegMouseout(); // trigger an eventMouseout if menu's mouse is over an event
+		this.triggerSegMouseout(); // trigger an eventMouseout if main's mouse is over an event
 
 		this.destroyFgSegs();
 		this.destroyBgSegs();
@@ -3685,7 +3685,7 @@ Grid.mixin({
 	------------------------------------------------------------------------------------------------------------------*/
 
 
-	// Called when the menu does a mousedown on an event, which might lead to dragging.
+	// Called when the main does a mousedown on an event, which might lead to dragging.
 	// Generic enough to work with any type of Grid.
 	segDragMousedown: function(seg, ev) {
 		var _this = this;
@@ -3970,7 +3970,7 @@ Grid.mixin({
 	------------------------------------------------------------------------------------------------------------------*/
 
 
-	// Called when the menu does a mousedown on an event's resizer, which might lead to resizing.
+	// Called when the main does a mousedown on an event's resizer, which might lead to resizing.
 	// Generic enough to work with any type of Grid.
 	segResizeMousedown: function(seg, ev, isStart) {
 		var _this = this;
@@ -5496,7 +5496,7 @@ DayGrid.mixin({
 			content: this.renderSegPopoverContent(cell, segs),
 			parentEl: this.el,
 			top: topEl.offset().top,
-			autoHide: true, // when the menu clicks elsewhere, hide the popover
+			autoHide: true, // when the main clicks elsewhere, hide the popover
 			viewportConstrain: view.opt('popoverViewportConstrain'),
 			hide: function() {
 				// destroy everything when the popover is hidden
@@ -6569,7 +6569,7 @@ var View = fc.View = Class.extend({
 	intervalDuration: null,
 	intervalUnit: null, // name of largest unit being displayed, like "month" or "week"
 
-	isSelected: false, // boolean whether a range of time is menu-selected or not
+	isSelected: false, // boolean whether a range of time is main-selected or not
 
 	// subclasses can optionally use a scroll container
 	scrollerEl: null, // the element that will most likely scroll when content is too tall
@@ -6686,7 +6686,7 @@ var View = fc.View = Class.extend({
 	},
 
 
-	// Computes the new date when the menu hits the prev button, given the current date
+	// Computes the new date when the main hits the prev button, given the current date
 	computePrevDate: function(date) {
 		return this.massageCurrentDate(
 			date.clone().startOf(this.intervalUnit).subtract(this.intervalDuration), -1
@@ -6694,7 +6694,7 @@ var View = fc.View = Class.extend({
 	},
 
 
-	// Computes the new date when the menu hits the next button, given the current date
+	// Computes the new date when the main hits the next button, given the current date
 	computeNextDate: function(date) {
 		return this.massageCurrentDate(
 			date.clone().startOf(this.intervalUnit).add(this.intervalDuration)
@@ -6996,7 +6996,7 @@ var View = fc.View = Class.extend({
 	},
 
 
-	// Computes the initial pre-configured scroll state prior to allowing the menu to change it.
+	// Computes the initial pre-configured scroll state prior to allowing the main to change it.
 	// Given the scroll state from the previous rendering. If first time rendering, given null.
 	computeInitialScroll: function(previousScrollState) {
 		return 0;
@@ -7145,7 +7145,7 @@ var View = fc.View = Class.extend({
 	------------------------------------------------------------------------------------------------------------------*/
 
 
-	// Computes if the given event is allowed to be dragged by the menu
+	// Computes if the given event is allowed to be dragged by the main
 	isEventDraggable: function(event) {
 		var source = event.source || {};
 
@@ -7248,7 +7248,7 @@ var View = fc.View = Class.extend({
 	},
 
 
-	// Computes if the given event is allowed to be resized by the menu at all
+	// Computes if the given event is allowed to be resized by the main at all
 	isEventResizable: function(event) {
 		var source = event.source || {};
 
@@ -7326,11 +7326,11 @@ var View = fc.View = Class.extend({
 	},
 
 
-	// Handler for unselecting when the menu clicks something and the 'unselectAuto' setting is on
+	// Handler for unselecting when the main clicks something and the 'unselectAuto' setting is on
 	documentMousedown: function(ev) {
 		var ignore;
 
-		// is there a selection, and has the menu made a proper left click?
+		// is there a selection, and has the main made a proper left click?
 		if (this.isSelected && this.opt('unselectAuto') && isPrimaryMouseButton(ev)) {
 
 			// only unselect if the clicked element is not identical to or inside of an 'unselectCancel' element
@@ -8076,7 +8076,7 @@ function Calendar_constructor(element, overrides) {
 
 
 	function refetchEvents() { // can be called as an API method
-		destroyEvents(); // so that events are cleared before menu starts waiting for AJAX
+		destroyEvents(); // so that events are cleared before main starts waiting for AJAX
 		fetchAndRenderEvents();
 	}
 
@@ -10640,7 +10640,7 @@ var AgendaView = fcViews.agenda = View.extend({
 	},
 
 
-	// Computes the initial pre-configured scroll state prior to allowing the menu to change it
+	// Computes the initial pre-configured scroll state prior to allowing the main to change it
 	computeInitialScroll: function() {
 		var scrollTime = moment.duration(this.opt('scrollTime'));
 		var top = this.timeGrid.computeTimeTop(scrollTime);

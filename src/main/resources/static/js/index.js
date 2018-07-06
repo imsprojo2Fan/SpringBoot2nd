@@ -1,6 +1,6 @@
 
 function redirect(htmlName){
-    var url = "/menu/redirect?htmlName="+htmlName;
+    var url = "/main/redirect?htmlName="+htmlName;
     $('#mainframe').attr("src",url);
 }
 
@@ -29,6 +29,7 @@ function isHide() {
     console.log("body",idoc.body);  //获取body*/
 
     var panel = idoc.getElementById("panel");//动态设置panel宽度 ie没试
+    var modals = idoc.getElementsByClassName("modal-dialog");
 
     clicCount++;
     if(clicCount%2==0){
@@ -36,12 +37,22 @@ function isHide() {
         if(panel){
             panel.setAttribute("class", "col-sm-10");
         }
-        $('#mainframe').css("margin-left","260px");
+        if(modals.length>0){//设置模态框水平居中
+            for(var i=0;i<modals.length;i++){
+                modals[i].style.marginLeft = '25%';
+            }
+        }
+        $('#mainframe').css("margin-left","250px");
     }else{
         console.log("close");
         if(panel){
             panel.setAttribute("class", "col-sm-12");
         }
-        $('#mainframe').css("margin-left","10px");
+        if(modals.length>0){
+            for(var i=0;i<modals.length;i++){
+                modals[i].style.marginLeft = '35%';
+            }
+        }
+        $('#mainframe').css("margin-left","0px");
     }
 }

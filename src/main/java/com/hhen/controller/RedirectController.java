@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
  * @Modified By:
  */
 @Controller
-@RequestMapping("/menu")
+@RequestMapping("/main")
 public class RedirectController {
 
 	JsonResult jsonResult = new JsonResult();
@@ -28,7 +28,7 @@ public class RedirectController {
 	@ApiOperation(value="用户登录首页", notes="")
 	@RequestMapping(value = "")
 	public String index (){
-		return "/html/menu/index.html";
+		return "/html/main/index.html";
 	}
 
 	/**
@@ -49,7 +49,7 @@ public class RedirectController {
 			jsonResult.setData(null);
 			return jsonResult;
 		}
-		return "/html/menu/"+htmlName+".html";
+		return "/html/main/"+htmlName+".html";
 	}
 
 }

@@ -8,9 +8,9 @@ package com.hhen.config;
  */
 public class JsonResult {
 
-	private int code; //返回状态码 1成功 -1失败
-	private String msg;	 //结果信息
-	private Object data; //返回数据
+	public static int code; //返回状态码 1成功 -1失败
+	private static String msg;	 //结果信息
+	private static Object data; //返回数据
 
 	public JsonResult() {
 	}

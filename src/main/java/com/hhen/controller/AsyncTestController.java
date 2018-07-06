@@ -29,15 +29,13 @@ public class AsyncTestController {
 
 	private static final Logger logger = LoggerFactory.getLogger(AsyncTestController.class);
 
-	@Autowired
-	private UserService userService;
 
 	@RequestMapping(value = "/sync", method = RequestMethod.GET)
 	public Object sync() throws InterruptedException {
 		logger.info(System.currentTimeMillis()+"");
 		//Thread.sleep(1000);
-		List<User> users = userService.getUserList();
-		return users;
+		//List<User> users = userService.getUserList();
+		return null;
 	}
 
 	@RequestMapping("/async")
@@ -52,8 +50,8 @@ public class AsyncTestController {
 			public String call() throws Exception {
 				logger.info(System.currentTimeMillis()+"");
 				//Thread.sleep(1000);
-				List<User> users = userService.getUserList();
-				return  JSON.toJSONString(users);
+				//List<User> users = userService.getUserList();
+				return  JSON.toJSONString("");
 			}
 		};
 	}

@@ -133,6 +133,12 @@
 
     <logger name="org.springframework" level="WARN" />
     <logger name="org.hibernate" level="WARN" />
+    <logger name="org.apache.ibatis" level="DEBUG">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    <logger name="java.sql" level="debug">
+        <appender-ref ref="STDOUT"/>
+    </logger>
 
     <!-- 生产环境下，将此级别配置为适合的级别，以免日志文件太多或影响程序性能 -->
     <root level="INFO">
@@ -146,7 +152,7 @@
 
     <!-- 测试环境+开发环境. -->
     <springProfile name="test,dev">
-        <logger name="com.hhen" level="INFO" />
+        <logger name="com.hhen" level="DEBUG" />
     </springProfile>
     <!-- 生产环境 -->
     <springProfile name="prod">

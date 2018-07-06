@@ -3,13 +3,16 @@ package com.hhen.controller;
 import com.hhen.config.JsonResult;
 import com.hhen.model.User;
 import com.hhen.service.UserService;
+import com.hhen.util.Md5Util;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
+import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -27,6 +30,10 @@ public class LoginController {
 
 	private static final Logger logger = LoggerFactory.getLogger(LoginController.class);
 	JsonResult jsonResult = new JsonResult();
+
+	@Value("com.hhen.sessionMaxTime")
+	private static int sessionMaxTime;
+
 
 	@Autowired
 	private UserService userService;
@@ -58,16 +65,27 @@ public class LoginController {
 	@ResponseBody
 	public Object  login(String account, String password, HttpSession session) {
 
-		session.setMaxInactiveInterval(30*60);
-
-		User user = new User();
-		user.setAccount(account);
-		user.setPassword(password);
-		session.setAttribute("user",user);
-		System.out.println("account:"+account+"-password:"+password);
-		jsonResult.setCode(1);
-		jsonResult.setMsg("success");
+		jsonResult.setCode(-1);
+		jsonResult.setMsg("failure");
 		jsonResult.setData(null);
+
+		if(StringUtils.isEmpty(account)||StringUtils.isEmpty(password)){
+			jsonResult.setMsg("account or password can`t be null!");
+			return jsonResult;
+		}
+		User user = userService.getUserByAccount(account);
+
+		if(user!=null){
+			String pass = user.getPassword();
+			String md5Pass = Md5Util.getMD5WithSalt(password);
+			if(pass.equals(md5Pass)){
+				session.setMaxInactiveInterval(sessionMaxTime);
+				session.setAttribute("user",user);
+				jsonResult.setCode(1);
+				jsonResult.setMsg("success");
+				jsonResult.setData(null);
+			}
+		}
 		return jsonResult;
 	}
 

@@ -56,7 +56,7 @@ function ajaxValidate(){
 		},
 		success : function(r) {
 			if (r.code == 1) {
-				window.location.href = "/menu";
+				window.location.href = "/main";
                 //swal("登录成功!",' ',"success");
 			} else {
 				swal("账号或密码不正确!",' ',"error");

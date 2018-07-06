@@ -1234,7 +1234,7 @@
             showFields = this.options.get('tooltipFormatFieldlist');
             showFieldsKey = this.options.get('tooltipFormatFieldlistKey');
             if (showFields && showFieldsKey) {
-                // menu-selected ordering of fields
+                // main-selected ordering of fields
                 newFields = [];
                 for (i = fields.length; i--;) {
                     fv = fields[i][showFieldsKey];

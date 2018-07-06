@@ -30,6 +30,10 @@ public class AuthFilter implements Filter {
 			response.sendRedirect("/login");
 			return;
 		}
+		if(!hasRight(request)){
+			response.sendRedirect("/err/403");
+			return;
+		}
 		chain.doFilter(arg0, arg1);
 	}
 
@@ -52,6 +56,21 @@ public class AuthFilter implements Filter {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * 判断是否有权限操作
+	 * @param request
+	 * @return
+	 */
+	private boolean hasRight(HttpServletRequest request) {
+
+		//进行是否需要登录的判断操作
+		User user = (User) request.getSession().getAttribute("user");
+		if (user.getType()==1){
+			return false;
+		}
+		return true;
 	}
 
 }
